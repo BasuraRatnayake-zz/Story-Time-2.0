@@ -28,5 +28,6 @@ I would be glad if someone help me in building this website.
 StoryTime 2.0 is covered by the MIT License.
 
 searchHighlight.js is covered by the MIT License by Johann Burkard.
+
 Copyright (C) 2015 ~ Basura Ratnayake ~ amuthupuwath@gmail.com
 
