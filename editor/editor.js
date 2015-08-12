@@ -194,8 +194,28 @@ var controls={
 	saveDocument:function(){//Need to insert an AJAX Call
 		
 	},
-	showUProgress:function(){
-		$('#imageContainer').html("0%").css("width","10px");
+	showUProgress:function(event){//Show Upload Progress
+	 	var percent = Math.round((event.loaded / event.total) * 100), 
+			proMeter = Math.round((414*percent)/100);
+		$('#imageContainer').html(percent+"%").css("width",proMeter+"px")	
+	},
+	uploadOkay:function(){
+		alert("K");
+		$('#imageContainer').html("").removeClass('waitPrepare');
+		$('#c_frImage').click()
+		//Add the rest of the code herer
+	},
+	uploadImage:function(data){//Upload Data to the server
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'testUpload.php', true); 
+		xhr.onload = function () { 
+	 		if(xhr.status != 200)
+				alert('An error occurred!, Something is wrong try again')
+		};	 
+ 
+		xhr.upload.addEventListener("progress", controls.showUProgress, false); 
+		xhr.addEventListener("load", controls.uploadOkay, false); 
+		xhr.send(data)
 	},
 	addImage:function(){
 		var formData = new FormData();//Initialize the form data
@@ -222,7 +242,7 @@ var controls={
 				file = files[i];
 				if(/^image\/(jpg|png|jpeg|gif)$/.test(file.type)){//Validate Image type	
 					size = file.size/1024/1024;//Get Image size in MB		
-					if(size < 2){//Check if the image size is less than 2 MB							
+					if(size < 10){//Check if the image size is less than 2 MB							
 						var reader = new FileReader();//Declare the File Reader
 						reader.readAsDataURL(files[i]);//Converts the image file into DataURL  					  	
 						reader.onload = function(_file){//On the load of the reader
@@ -243,8 +263,9 @@ var controls={
 		$('#uploadImgs').click(function(){
 			$(this).fadeOut('slow');
 			$('#imageLoad').css('height','158px');
-			$('#imageContainer').html("0%").addClass('waitPrepare').css("width","10px");
-		});
+			$('#imageContainer').html("0%").addClass('waitPrepare').css("width","1px");
+			controls.uploadImage(formData);//Call Image Upload Function
+		})
 	},
 	textStyle:function(){
 		$('.icon').click(function(){
