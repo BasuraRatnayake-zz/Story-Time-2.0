@@ -82,11 +82,11 @@ body{background:#666}
 
 /* Table Box - Start */
 .tableBox{
-	display: none;
-	height: 125px;
-	left: 221px;
-	top: 123px;
-	width: 120px;
+	display:none;
+	height:125px;
+	left:221px;
+	top:123px;
+	width:120px;
 }
 .tableB{
 	margin-bottom:3px
@@ -97,7 +97,7 @@ body{background:#666}
 
 /* Dialogbox - Start */
 .diagBox{
-	background:#fff;
+	background:#f4fcfc;
 	border:2px solid #008fb1;
 	position:absolute;
 }
@@ -127,6 +127,11 @@ body{background:#666}
 	border:2px solid #008fb1;
 	font:12px arial;
 	padding:4px
+}
+.diagDesc{
+	font-size:12px;
+	margin-top:10px;
+	text-align:center;
 }
 /* Dialogbox - End */
 
@@ -194,6 +199,57 @@ body{background:#666}
 	height:500px;
 	width:980px
 }
+/*ImageUpload Box - Start*/
+#imageLoad{
+	display:none;
+	height:125px;
+	margin:145px 300px;
+	width:450px
+}
+#file{
+	cursor:pointer;
+	border-width:1px;
+	width:270px
+}
+#imageContainer{
+	float: left;
+	margin: 0 10px;
+	width: 320px;
+}
+.imageHolder{
+	border:2px solid #008fb1;
+	display:block;
+	float:left;
+	height:50px;
+	margin:5px;
+	width:50px
+}
+#uploadImgs{
+	background: #008fb1;
+	color: #ffffff;
+	cursor: pointer;
+	display: none;
+	float: left;
+	font-size: 14px;
+	height: 23px;
+	margin-top: 6px;
+	padding: 15px;
+	width: 46px;
+}
+#uploadImgs:hover{background:#333}
+.waitPrepare{
+	background: #008fb1;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+	height: 18px;
+	max-width: 414px;
+	padding: 8px;
+	text-align: center;
+	width: 10px;
+}
+/*ImageUpload Box - End*/
+
 /* Toolbar - Start */
 	#toolbar{
 		background:#d6e7f6;

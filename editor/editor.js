@@ -2,6 +2,8 @@
 $(document).ready(function(){
 	controls.init();
 });
+
+			
 var controls={
 	ColorSet: "",
 	init:function(){		
@@ -192,6 +194,58 @@ var controls={
 	saveDocument:function(){//Need to insert an AJAX Call
 		
 	},
+	showUProgress:function(){
+		$('#imageContainer').html("0%").css("width","10px");
+	},
+	addImage:function(){
+		var formData = new FormData();//Initialize the form data
+		$('#BackOverlay').fadeIn('fast');
+		$('#BackOverlay').click(function(){
+			$('#c_frImage').click()
+		});
+		$('#imageLoad').toggle('normal');//Toggles the display of the div
+		$('#c_frImage').click(function(){//When Close Button Clicked
+			$('#imageLoad,#BackOverlay').fadeOut('normal')//Close the div			
+			$('#file').val("")//Clears the previously selected images
+			$('#imageLoad').css('height','125px');
+			$('#uploadImgs').fadeOut('slow');
+			$('#imageContainer').html("");
+		});
+		$('#file').click(function(){//When Image Browse Clicked		
+			$(this).val("")//Clears the previously selected images
+		});
+		$('#file').change(function(){//When files chosen for upload
+			var files = this.file || this.files, file,size,length;
+			length=(files.length > 10)?10:files.length;//Set Image length to 10 if more
+			$('#imageContainer').html("");//Empties the images container
+			for(var i=0; i < length; i++){
+				file = files[i];
+				if(/^image\/(jpg|png|jpeg|gif)$/.test(file.type)){//Validate Image type	
+					size = file.size/1024/1024;//Get Image size in MB		
+					if(size < 2){//Check if the image size is less than 2 MB							
+						var reader = new FileReader();//Declare the File Reader
+						reader.readAsDataURL(files[i]);//Converts the image file into DataURL  					  	
+						reader.onload = function(_file){//On the load of the reader
+							var img = _file.target.result;
+							$('#imageContainer').html($('#imageContainer').html()+"<img src='"+img+"' class='imageHolder'>")//Assign DataURL to image
+						}
+						
+						size=182;
+						if(length > 5) size = 252;
+						$('#imageLoad').css('height',size+'px');
+						
+						formData.append('photos[]', file, file.name);//Append Images to the form										
+						$('#uploadImgs').fadeIn('slow')//Show Upload Button
+					}
+				}
+			}
+		});
+		$('#uploadImgs').click(function(){
+			$(this).fadeOut('slow');
+			$('#imageLoad').css('height','158px');
+			$('#imageContainer').html("0%").addClass('waitPrepare').css("width","10px");
+		});
+	},
 	textStyle:function(){
 		$('.icon').click(function(){
 			switch(this.id){
@@ -259,7 +313,7 @@ var controls={
 				
 					break		
 				case "insert_image":
-					controls.exe("italic",null);
+					controls.addImage();
 					break		
 				case "table":						
 					controls.ShowTable();
