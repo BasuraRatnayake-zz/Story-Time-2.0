@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="editor.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="BackOverlay" class="overlay"></div>
+<div id="container">
+	<div id="linkAdd" class="diagBox">
+    	<div class="title_diag">
+        	<span class="td_title">Add Hyperlink to Text</span>
+            <span id="c_frLink" class="td_close" title="Close Find and Replace">X</span>
+            <div id="linkaI" class="findDiv">
+                <span>Address</span>
+                <input name="linkt" id="linkt" class="diag_input" type="text" value="http://"/>
+                <span id="linkIA" class="valInput"></span>
+            </div>
+            <button id="addL_btn" name="replacebtn" class="frbtn" title="Add Link to Text">Add Link</button>
+        </div>
+    </div>
+	<div id="findHighlight" class="diagBox">
+    	<div class="title_diag">
+        	<span class="td_title">Find and Replace</span>
+            <span id="c_frh" class="td_close" title="Close Find and Replace">X</span>
+        </div>
+        <div class="findDiv">
+        	<span>Look for the word </span>
+            <input name="findt" id="findt" class="diag_input" type="text"/>
+        </div>
+        <div id="replaceD" class="findDiv">
+        	<span>Replace the word with </span>
+            <input name="replacet" id="replacet" class="diag_input" type="text"/>
+        </div>
+        <div id="btnsFr">
+        <button id="replacebtn" name="replacebtn" class="frbtn" title="Replace the found phrase">Replace Phrase</button>
+        <button id="findbtn" name="findbtn" class="frbtn" title="Find and Highlight the Phrase">Find Phrase</button>
+        <button id="unhighlightbtn" name="unhighlightbtn" class="frbtn" title="Remove Highlight from Found Phrase">Remove Highlight</button>
+        </div>
+        <div id="searchFound"></div>
+    </div>	
+    <div id="toolbar">
+      <div class="tlbGroup">
+          <div class="tblG_name">Font Size and Name</div>
+          <select id="fontName" name="fontName" title="Select Font Type">
+            <option value="Arial">Arial</option>
+            <option value="Arial Black">Arial Black</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Lucida Console">Lucida Console</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Trebuchet MS">Trebuchet MS</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+          <input id="fontSize" name="fontSize" type="number" value="4" max="7" min="1" Title="Select Font Size">
+      </div>
+      <div class="tlbGroup">
+          <div class="tblG_name">Text Styles</div>
+          <div id="bold" class="icon" title="Bold"></div>
+          <div id="italic" class="icon" title="Italic"></div>
+          <div id="underline" class="icon" title="Underline"></div>
+          <div id="text_color" class="icon" title="Change Text Color"></div>
+          <div id="select_background_color" class="icon" title="Highlight Text"></div>
+          <div id="strike_through" class="icon" title="Strike Through"></div>
+      </div>
+      <div class="tlbGroup">
+          <div class="tblG_name">Text Alignment</div>
+          <div id="left" class="icon" title="Align Left"></div>
+          <div id="center" class="icon" title="Align Center"></div>
+          <div id="right" class="icon" title="Align Right"></div>
+          <div id="justify" class="icon" title="Justify"></div>
+      </div>
+      <div class="tlbGroup">
+          <div class="tblG_name">Indenting and Lists</div>
+          <div id="decrease_indent" class="icon" title="Indent"></div>
+          <div id="increase_indent" class="icon" title="Decrease Indent"></div>
+          <div id="numbered_list" class="icon" title="Ordered List"></div>
+          <div id="bulleted_list" class="icon" title="Unordered List"></div>
+      </div>
+      <div class="tlbGroup">
+          <div class="tblG_name">Undo/Redo</div>
+          <div id="undo" class="icon" title="Undo Change"></div>
+          <div id="redo" class="icon" title="Redo Change"></div>
+      </div> 
+      <div class="tlbGroup">
+          <div class="tblG_name">Cut and Paste</div>
+          <div id="cut" class="icon" title="Cut"></div>
+          <div id="copy" class="icon" title="Copy"></div>
+          <div id="paste" class="icon" title="Paste"></div>
+          <div class="seperator"></div>
+          <div id="paste_as_plain_text" class="icon" title="Paste as Plain Text"></div>
+          <div id="paste_from_word" class="icon" title="Paste Text from Word"></div>
+      </div>
+      <div class="tlbGroup">
+          <div class="tblG_name">Insert/Remove Item</div>
+          <div id="insert_image" class="icon" title="Insert Image"></div>
+          <div id="table" class="icon" title="Insert Table"></div>
+          <div id="blockquote" class="icon" title="Insert Block Quotes"></div>
+          <div id="remove_format" class="icon" title="Remove Formatting"></div>
+          <div id="linkA" class="icon" title="Insert Hyperlink"></div>
+          <div id="remove_link" class="icon" title="Remove Hyperlink"></div>
+      </div>
+      <div class="tlbGroup">
+          <div class="tblG_name">Corrections</div> 
+          <div id="find" class="icon" title="Search for a Phrase"></div>
+          <div id="replace" class="icon" title="Replace a Phrase"></div>  
+          <div id="select_all" class="icon" title="Select All Text"></div>
+      </div> 
+      <div class="tlbGroup">
+          <div class="tblG_name">Save/Preview/HTML</div> 
+          <div id="save" class="icon" title="Save Your Work"></div>
+          <div id="preview" class="icon" title="Preview"></div>
+          <div id="source" class="icon" title="Toggle Source"></div>
+      </div>
+      <div class="tlbGroup">
+          <div class="tblG_name">Language Selection</div> 
+          <div id="sinhala" class="icon" title="Type in Sinhala"></div>
+          <div id="tamil" class="icon" title="Type in Tamil"></div>
+          <div id="english" class="icon" title="Type in English"></div>
+      </div>   
+    </div>
+  <div id="editor">
+  	<div class="tableBox">   	
+    </div>
+  	<div class="colorBox">
+    	<div class="TopColors">
+            <div class="colorTopSq cl0"></div>
+            <div class="colorTopSq cl1"></div>
+            <div class="colorTopSq cl2"></div>
+            <div class="colorTopSq cl3"></div>
+            <div class="colorTopSq cl4"></div>
+            <div class="colorTopSq cl5"></div>
+            <div class="colorTopSq cl6"></div>
+            <div class="colorTopSq cl7"></div>
+            <div class="colorTopSq cl8"></div>
+            <div class="colorTopSq cl9"></div>
+        </div>
+        <div id="clR0" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#f2f2f2"></div> 
+            <div class="colorSq" style="background-color:#d8d8d8"></div> 
+            <div class="colorSq" style="background-color:#bfbfbf"></div> 
+            <div class="colorSq" style="background-color:#a5a5a5"></div> 
+            <div class="colorSq" style="background-color:#7f7f7f"></div> 
+        </div>
+        <div id="clR1" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#7f7f7f"></div> 
+            <div class="colorSq" style="background-color:#595959"></div> 
+            <div class="colorSq" style="background-color:#3f3f3f"></div> 
+            <div class="colorSq" style="background-color:#262626"></div> 
+            <div class="colorSq" style="background-color:#0c0c0c"></div> 
+        </div>
+        <div id="clR2" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#d0cece"></div> 
+            <div class="colorSq" style="background-color:#aeabab"></div> 
+            <div class="colorSq" style="background-color:#757070"></div> 
+            <div class="colorSq" style="background-color:#3a3838"></div> 
+            <div class="colorSq" style="background-color:#171616"></div> 
+        </div>
+        <div id="clR3" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#d6dce4"></div> 
+            <div class="colorSq" style="background-color:#adb9ca"></div> 
+            <div class="colorSq" style="background-color:#8496b0"></div> 
+            <div class="colorSq" style="background-color:#323f4f"></div> 
+            <div class="colorSq" style="background-color:#222a35"></div> 
+        </div>
+        <div id="clR4" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#deebf6"></div> 
+            <div class="colorSq" style="background-color:#bdd7ee"></div> 
+            <div class="colorSq" style="background-color:#9cc3e5"></div> 
+            <div class="colorSq" style="background-color:#2e75b5"></div> 
+            <div class="colorSq" style="background-color:#1e4e79"></div> 
+        </div>
+        <div id="clR5" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#fbe5d5"></div> 
+            <div class="colorSq" style="background-color:#f7cbac"></div> 
+            <div class="colorSq" style="background-color:#f4b183"></div> 
+            <div class="colorSq" style="background-color:#c55a11"></div> 
+            <div class="colorSq" style="background-color:#833c0b"></div> 
+        </div>
+        <div id="clR6" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#ededed"></div> 
+            <div class="colorSq" style="background-color:#dbdbdb"></div> 
+            <div class="colorSq" style="background-color:#c9c9c9"></div> 
+            <div class="colorSq" style="background-color:#7b7b7b"></div> 
+            <div class="colorSq" style="background-color:#525252"></div> 
+        </div>
+        <div id="clR7" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#fff2cc"></div> 
+            <div class="colorSq" style="background-color:#fee599"></div> 
+            <div class="colorSq" style="background-color:#ffd965"></div> 
+            <div class="colorSq" style="background-color:#bf9000"></div> 
+            <div class="colorSq" style="background-color:#7f6000"></div> 
+        </div>
+        <div id="clR8" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#d9e2f3"></div> 
+            <div class="colorSq" style="background-color:#b4c6e7"></div> 
+            <div class="colorSq" style="background-color:#8eaadb"></div> 
+            <div class="colorSq" style="background-color:#2f5496"></div> 
+            <div class="colorSq" style="background-color:#1f3864"></div> 
+        </div>
+        <div id="clR9" class="colorRow">        	
+        	<div class="colorSq" style="background-color:#e2efd9"></div> 
+            <div class="colorSq" style="background-color:#c5e0b3"></div> 
+            <div class="colorSq" style="background-color:#a8d08d"></div> 
+            <div class="colorSq" style="background-color:#538135"></div> 
+            <div class="colorSq" style="background-color:#375623"></div> 
+        </div>   
+        <div class="stColors">
+        	<div style="margin-left:1px">Standard Colours</div>
+        	<div class="colorTopSq clT0"></div>
+            <div class="colorTopSq clT1"></div>
+            <div class="colorTopSq clT2"></div>
+            <div class="colorTopSq clT3"></div>
+            <div class="colorTopSq clT4"></div>
+            <div class="colorTopSq clT5"></div>
+            <div class="colorTopSq clT6"></div>
+            <div class="colorTopSq clT7"></div>
+            <div class="colorTopSq clT8"></div>
+            <div class="colorTopSq clT9"></div>
+        </div>
+    </div>
+      <textarea name="storyD" id="storyD"></textarea>
+      <iframe name="storyDP" id="storyDP"></iframe>
+  </div>
+  <div id="statusBar">Evolve WYSIWYG 1.0 | Copyright #ROOT. All Rights Reserved. </div>
+</div>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="searchHighlight.js"></script>
+<script type="text/javascript" src="editor.js"></script>
+</body></html>
